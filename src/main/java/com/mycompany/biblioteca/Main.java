@@ -150,4 +150,27 @@ public class Main {
             System.out.println(l);
         }
     }
+    
+        public static Libro buscarLibroPorCodigo(String codigo) {
+        for (Libro l : libros) {
+            if (l.getCodigo().equals(codigo)) {
+                return l;
+            }
+        }
+        return null;
+    }
+
+    public static void buscarLibro() {
+        System.out.println("\n--- Buscar Libro por Codigo ---");
+        System.out.print("Codigo a buscar: ");
+        String codigo = sc.nextLine();
+
+        Libro encontrado = buscarLibroPorCodigo(codigo);
+
+        if (encontrado != null) {
+            System.out.println("Libro encontrado: " + encontrado);
+        } else {
+            System.out.println("No se encontró un libro con ese código.");
+        }
+    }
 }
