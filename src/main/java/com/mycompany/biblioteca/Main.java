@@ -67,7 +67,7 @@ public class Main {
         }
     }
     
-        public static void actualizarCliente() {
+    public static void actualizarCliente() {
         System.out.println("\n--- Actualizar Cliente ---");
         System.out.print("ID del cliente a actualizar: ");
         String id = sc.nextLine();
@@ -98,5 +98,21 @@ public class Main {
         }
 
         System.out.println("Cliente actualizado exitosamente.");
+    }
+    
+    public static void eliminarCliente() {
+        System.out.println("\n--- Eliminar Cliente ---");
+        System.out.print("ID del cliente a eliminar: ");
+        String id = sc.nextLine();
+
+        Cliente cliente = buscarClientePorId(id);
+
+        if (cliente == null) {
+            System.out.println("No se encontró un cliente con ese ID.");
+            return;
+        }
+
+        clientes.remove(cliente);
+        System.out.println("Cliente eliminado exitosamente.");
     }
 }
