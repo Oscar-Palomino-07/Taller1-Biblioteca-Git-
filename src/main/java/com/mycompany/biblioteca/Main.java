@@ -30,4 +30,40 @@ public class Main {
 
         System.out.println("Cliente creado exitosamente.");
     }
+    
+        public static void listarClientes() {
+        System.out.println("\n--- Lista de Clientes ---");
+
+        if (clientes.isEmpty()) {
+            System.out.println("No hay clientes registrados.");
+            return;
+        }
+
+        for (Cliente c : clientes) {
+            System.out.println(c);
+        }
+    }
+
+    public static Cliente buscarClientePorId(String id) {
+        for (Cliente c : clientes) {
+            if (c.getId().equals(id)) {
+                return c;
+            }
+        }
+        return null;
+    }
+
+    public static void buscarCliente() {
+        System.out.println("\n--- Buscar Cliente por ID ---");
+        System.out.print("ID a buscar: ");
+        String id = sc.nextLine();
+
+        Cliente encontrado = buscarClientePorId(id);
+
+        if (encontrado != null) {
+            System.out.println("Cliente encontrado: " + encontrado);
+        } else {
+            System.out.println("No se encontró un cliente con ese ID.");
+        }
+    }
 }
