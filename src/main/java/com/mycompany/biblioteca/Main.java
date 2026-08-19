@@ -200,4 +200,20 @@ public class Main {
 
         System.out.println("Libro actualizado exitosamente.");
     }
+        
+    public static void eliminarLibro() {
+        System.out.println("\n--- Eliminar Libro ---");
+        System.out.print("Codigo del libro a eliminar: ");
+        String codigo = sc.nextLine();
+
+        Libro libro = buscarLibroPorCodigo(codigo);
+
+        if (libro == null) {
+            System.out.println("No se encontró un libro con ese código.");
+            return;
+        }
+
+        libros.remove(libro);
+        System.out.println("Libro eliminado exitosamente.");
+    }
 }
