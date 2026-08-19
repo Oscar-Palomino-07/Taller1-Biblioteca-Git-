@@ -219,7 +219,7 @@ public class Main {
         System.out.println("Libro eliminado exitosamente.");
     }
     
-        public static void crearPrestamo() {
+    public static void crearPrestamo() {
         System.out.println("\n--- Registrar Prestamo ---");
 
         System.out.print("ID del cliente: ");
@@ -254,5 +254,37 @@ public class Main {
         libro.setDisponible(false);
 
         System.out.println("Prestamo registrado exitosamente.");
+    }
+        
+        public static Prestamo buscarPrestamoPorId(String idPrestamo) {
+        for (Prestamo p : prestamos) {
+            if (p.getIdPrestamo().equals(idPrestamo)) {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public static void registrarDevolucion() {
+        System.out.println("\n--- Registrar Devolucion ---");
+        System.out.print("ID del prestamo: ");
+        String idPrestamo = sc.nextLine();
+
+        Prestamo prestamo = buscarPrestamoPorId(idPrestamo);
+
+        if (prestamo == null) {
+            System.out.println("No se encontró un prestamo con ese ID.");
+            return;
+        }
+
+        if (prestamo.getEstado().equals("DEVUELTO")) {
+            System.out.println("Este prestamo ya fue devuelto.");
+            return;
+        }
+
+        prestamo.setEstado("DEVUELTO");
+        prestamo.getLibro().setDisponible(true);
+
+        System.out.println("Devolucion registrada exitosamente.");
     }
 }
