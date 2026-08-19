@@ -173,4 +173,31 @@ public class Main {
             System.out.println("No se encontró un libro con ese código.");
         }
     }
+    
+        public static void actualizarLibro() {
+        System.out.println("\n--- Actualizar Libro ---");
+        System.out.print("Codigo del libro a actualizar: ");
+        String codigo = sc.nextLine();
+
+        Libro libro = buscarLibroPorCodigo(codigo);
+
+        if (libro == null) {
+            System.out.println("No se encontró un libro con ese código.");
+            return;
+        }
+
+        System.out.print("Nuevo titulo (" + libro.getTitulo() + "): ");
+        String titulo = sc.nextLine();
+        if (!titulo.isBlank()) {
+            libro.setTitulo(titulo);
+        }
+
+        System.out.print("Nuevo autor (" + libro.getAutor() + "): ");
+        String autor = sc.nextLine();
+        if (!autor.isBlank()) {
+            libro.setAutor(autor);
+        }
+
+        System.out.println("Libro actualizado exitosamente.");
+    }
 }
